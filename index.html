@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bendzhamin1 — Developer &amp; Designer</title>
+  <link rel="icon" href="./assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+
+      <!-- HEADER -->
+      <header class="header">
+        <div class="brand">
+          <div class="brand__logo"><img src="./assets/logo.svg" alt="Logo"></div>
+          <div>
+            <div class="brand__name">bendzhamin1</div>
+            <div class="brand__role">Developer &amp; Designer</div>
+          </div>
+        </div>
+
+        <div class="switch" role="tablist" aria-label="Категория проектов">
+          <button class="switch__btn is-active" data-cat="dev" role="tab" aria-selected="true">Dev projects</button>
+          <button class="switch__btn" data-cat="design" role="tab" aria-selected="false">Design projects</button>
+        </div>
+
+        <div class="social">
+          <a class="social__mail" href="mailto:hello@bendzhamin.dev">hello@bendzhamin.dev</a>
+          <a class="social__dot" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55v-2.14c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.16a10.9 10.9 0 0 1 5.72 0c2.18-1.47 3.14-1.16 3.14-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.66 5.31-5.19 5.59.41.35.77 1.04.77 2.1v3.11c0 .3.2.65.79.55A11.03 11.03 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"></path></svg>
+          </a>
+          <a class="social__dot" href="https://t.me/" target="_blank" rel="noopener" aria-label="Telegram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 3.5 11.6c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.3.8.7.8.3 0 .5-.1.7-.4l2.5-2.4 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.2-.4-1.7-1.4-1.4zM8.7 14.2 18 8.2c.4-.3.8 0 .5.3l-7.7 6.9-.3 3-1.4-4.2z"></path></svg>
+          </a>
+          <a class="social__dot" href="https://www.artstation.com/" target="_blank" rel="noopener" aria-label="ArtStation">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2 3.6 18h4.3l1.7-3h6.8l1.7 3h4.3L14 3.2zm0 5.3 2.4 4.2H9.6z"></path></svg>
+          </a>
+        </div>
+      </header>
+
+      <!-- DEV: folder cards -->
+      <section id="dev" class="dev-grid"></section>
+
+      <!-- DESIGN: masonry -->
+      <section id="design" class="masonry" hidden></section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__label">About</div>
+          <p class="footer__about">Здесь будет короткий текст обо мне — заглушка. Дизайнер и iOS-разработчик, собираю продукты от идеи до релиза.</p>
+        </div>
+        <div>
+          <div class="footer__label">Рекомендую</div>
+          <div id="recs" class="recs"></div>
+        </div>
+        <div>
+          <div class="footer__label">Contacts</div>
+          <a class="footer__mail" href="mailto:hello@bendzhamin.dev">hello@bendzhamin.dev</a>
+          <div class="footer__dots">
+            <a class="footer__dot" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55v-2.14c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.16a10.9 10.9 0 0 1 5.72 0c2.18-1.47 3.14-1.16 3.14-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.66 5.31-5.19 5.59.41.35.77 1.04.77 2.1v3.11c0 .3.2.65.79.55A11.03 11.03 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"></path></svg>
+            </a>
+            <a class="footer__dot" href="https://t.me/" target="_blank" rel="noopener" aria-label="Telegram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 3.5 11.6c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.3.8.7.8.3 0 .5-.1.7-.4l2.5-2.4 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.2-.4-1.7-1.4-1.4zM8.7 14.2 18 8.2c.4-.3.8 0 .5.3l-7.7 6.9-.3 3-1.4-4.2z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__copy">© 2026 bendzhamin1</div>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
