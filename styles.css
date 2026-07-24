@@ -30,7 +30,7 @@ a { color: inherit; text-decoration: none; }
 
 .shell {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 44px 48px 0;
   flex: 1;
@@ -134,21 +134,60 @@ a { color: inherit; text-decoration: none; }
 
 .folder__body {
   background: var(--body-bg);
-  min-height: 240px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   border-radius: 0 14px 14px 14px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 6px 16px rgba(0,0,0,0.05);
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 .folder__inner {
+  position: relative;
+  z-index: 2;
   padding: 20px 22px 18px;
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
 }
+
+/* --- медиа-фон: картинка появляется ТОЛЬКО во вкладке «Подробнее» --- */
+.folder__bg,
+.folder__scrim { display: none; }              /* по умолчанию скрыто (короткая вкладка) */
+.folder.is-media .folder__bg,
+.folder.is-media .folder__scrim { display: block; }
+
+.folder__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(1.5px);           /* слабый блюр */
+  transform: scale(1.04);        /* прячем размытые края */
+  z-index: 0;
+}
+.folder__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* лёгкое затемнение: верх почти прозрачный, к низу чуть плотнее */
+  background: linear-gradient(
+    180deg,
+    rgba(15,15,17,0.08) 0%,
+    rgba(15,15,17,0.24) 50%,
+    rgba(15,15,17,0.48) 100%
+  );
+}
+
+/* светлый текст — только когда активна вкладка с фото */
+.folder.is-media .folder__longtext { color: #EDEDEF; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.folder.is-media .folder__rule { background: rgba(255,255,255,0.24); }
+.folder.is-media .folder__link { color: #fff; }
+.folder.is-media .folder__link:hover { color: rgba(255,255,255,0.72); }
+.folder.is-media .folder__link .arw { color: rgba(255,255,255,0.72); }
+.folder.is-media .coauthor__name { color: rgba(255,255,255,0.82); }
 
 .folder__short {
   font-size: 14.5px; line-height: 1.55; color: var(--ink-soft);
@@ -180,6 +219,7 @@ a { color: inherit; text-decoration: none; }
   transition: color .15s ease;
 }
 .folder__link:hover { color: var(--muted); }
+.folder__link .arw { color: #9A9AA0; }
 
 /* ---------- DESIGN: masonry ---------- */
 .masonry { column-count: 4; column-gap: 16px; }
@@ -199,6 +239,13 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
   letter-spacing: .01em;
 }
+.masonry__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
 
 /* ---------- FOOTER ---------- */
 .footer {
@@ -208,11 +255,11 @@ a { color: inherit; text-decoration: none; }
   background: var(--footer-bg);
 }
 .footer__grid {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 48px 48px 40px;
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr;
   gap: 48px;
 }
 .footer__label {
@@ -226,33 +273,14 @@ a { color: inherit; text-decoration: none; }
   max-width: 380px; text-wrap: pretty;
 }
 
-.recs { display: flex; flex-direction: column; gap: 10px; }
-.rec { display: flex; align-items: center; gap: 10px; transition: opacity .15s ease; }
+.recs { display: flex; flex-direction: column; gap: 14px; }
+.rec { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; transition: opacity .15s ease; }
 .rec:hover { opacity: 0.7; }
-.rec__ava {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: #CFCFD3; color: var(--ink-soft);
-  font-size: 11px; font-weight: 600;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
 .rec__name { display: block; font-size: 13.5px; font-weight: 600; line-height: 1.2; }
 .rec__role { display: block; font-size: 11.5px; color: var(--muted); }
 
-.footer__mail { font-size: 14px; font-weight: 500; display: inline-block; margin-bottom: 16px; transition: opacity .15s ease; }
-.footer__mail:hover { opacity: 0.6; }
-.footer__dots { display: flex; gap: 10px; }
-.footer__dot {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: #fff; border: 1px solid var(--hairline);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--ink);
-  transition: all .15s ease;
-}
-.footer__dot:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
-
 .footer__copy {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 48px 32px;
   font-size: 12px;

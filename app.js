@@ -1,48 +1,66 @@
-// ---- Данные (рандомные заглушки) ----
+// ---- Данные ----
 const RECOMMENDATIONS = [
-  { name: 'Андрей Соколов', role: 'Product Designer',  initials: 'АС', url: 'https://t.me/' },
-  { name: 'Артём Волков',   role: 'Product Manager',   initials: 'АВ', url: 'https://t.me/' },
-  { name: 'Марина Ким',     role: 'Engineering Lead',  initials: 'МК', url: 'https://t.me/' }
+  { name: 'Андрей Ермолов', role: 'backend/frontend developer', url: 'https://github.com/andrey-ermolov' }
 ];
 
 const DEV_PROJECTS = [
-  { title: 'DeskHub',
-    shortDesc: 'Chrome-расширение — замена стартовой страницы в духе Яндекс.Табло с быстрым доступом к сайтам.',
-    longDesc: 'Chrome web extension, эмулирующее speed dial: real-time синхронизация через Google-аккаунт, управление вкладками по папкам, кастомные превью и импорт закладок.',
-    links: [{ label: 'Chrome Store' }, { label: 'GitHub' }],
-    coauthor: { name: 'Андреем С.', initials: 'АС', url: 'https://t.me/' } },
-  { title: 'Cargo Tracker',
-    shortDesc: 'iOS-приложение для отслеживания доставок в реальном времени.',
-    longDesc: 'Отслеживание грузов в реальном времени на SwiftUI: карты, push-уведомления о статусах, оффлайн-кэш и виджеты на экран блокировки.',
-    links: [{ label: 'App Store' }, { label: 'GitHub' }] },
-  { title: 'Focus Timer',
-    shortDesc: 'Минималистичный таймер и виджет для фокус-режима.',
-    longDesc: 'Таймер по методу Pomodoro с виджетами для домашнего экрана, статистикой сессий и интеграцией с Календарём.',
-    links: [{ label: 'App Store' }, { label: 'Case' }] },
-  { title: 'Ledger',
-    shortDesc: 'Личный финансовый трекер с аналитикой расходов.',
-    longDesc: 'Финансовый трекер: категории, бюджеты, графики трат по месяцам, синхронизация через iCloud и экспорт в CSV.',
-    links: [{ label: 'Live' }, { label: 'GitHub' }] },
-  { title: 'Pulse',
-    shortDesc: 'Обёртка над HealthKit: сон, пульс и активность в дашборде.',
-    longDesc: 'Единый дашборд здоровья поверх HealthKit — сон, пульс, активность и тренды с еженедельными сводками.',
-    links: [{ label: 'Demo' }, { label: 'GitHub' }],
-    coauthor: { name: 'Мариной К.', initials: 'МК', url: 'https://t.me/' } },
-  { title: 'Nimbus',
-    shortDesc: 'Быстрая синхронизация файлов между устройствами.',
-    longDesc: 'End-to-end шифрованная синхронизация файлов между устройствами с дельта-обновлениями и версионированием.',
-    links: [{ label: 'Live' }, { label: 'GitHub' }] }
+  {
+    title: 'DeskHub',
+    media: './assets/deskhub.png',
+    mediaPos: 'center 42%',
+    shortDesc: 'Расширение в Chrome\nУдобная сортировка закладок на начальной странице Google Chrome',
+    longDesc:
+      'Папки и сортировка закладок на новой вкладке: кастомизация интерфейса и синхронизация рабочего пространства.\n' +
+      'DeskHub — это рабочий стол для ваших закладок.\n' +
+      'Папки, кастомизация, drag&drop, синхронизация и многое другое.\n' +
+      'Проект активно развивается и обновляется.',
+    links: [
+      { label: 'Chrome Store', url: 'https://chromewebstore.google.com/detail/deskhub/lejpopklkflgiimjhoeniopgjcgpakcn' },
+      { label: 'GitHub',       url: 'https://github.com/bendzhamin1/DeskHub' }
+    ]
+  },
+  {
+    title: 'BenVpn',
+    media: './assets/benvpn.png',
+    mediaPos: 'center center',
+    shortDesc: 'BenVpn — графическая оболочка над sing-box и xray, многогранный функционал и простота использования',
+    longDesc:
+      'Универсальный клиент для любого протокола, в коробке сразу: обход российских доменов, ' +
+      'раздельное туннелирование по сайтам и приложениям, режим proxy и TUN, ' +
+      'группы подписок, логи и многое другое.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/bendzhamin1/BenVpn' }
+    ]
+  },
+  {
+    title: 'PipDot',
+    // положи картинку в site/assets/pipdot.png — подхватится автоматически
+    media: './assets/pipdot.png',
+    mediaPos: 'center center',
+    shortDesc: 'Расширение в Chrome\nТочка в углу любого видео: клик открывает окно «картинка в картинке» поверх всех окон, с паузой и перемоткой.',
+    longDesc: 'Расширение использует встроенный функционал «картинка в картинке» Chrome.',
+    links: [
+      { label: 'Chrome Store', url: '#' },
+      { label: 'GitHub',       url: 'https://github.com/bendzhamin1/PipDot' }
+    ]
+  }
 ];
 
+// ГАЛЕРЕЯ (вкладка Design).
+// Чтобы добавить свою работу: положи файл в site/assets/design/ и впиши строку:
+//   { src: './assets/design/moya-rabota.jpg', alt: 'Название работы' },
+// Порядок строк = порядок в галерее. Высота плитки берётся из самой картинки —
+// указывать соотношение сторон не нужно.
+// Строки без src (только title/ratio) — это серые заглушки-примеры, удали их,
+// когда зальёшь свои фото.
 const DESIGN_PROJECTS = [
-  { title: 'Orbit UI Kit',   ratio: '3 / 4' }, { title: 'Weekend App',   ratio: '4 / 5' },
-  { title: 'Menu Redesign',  ratio: '1 / 1' }, { title: 'Archive',       ratio: '3 / 5' },
-  { title: 'Signal Flow',    ratio: '4 / 3' }, { title: 'Grove Landing', ratio: '2 / 3' },
-  { title: 'Atlas Icons',    ratio: '1 / 1' }, { title: 'Harbor',        ratio: '4 / 5' },
-  { title: 'Verse',          ratio: '3 / 4' }, { title: 'North Studio',  ratio: '3 / 2' }
+  { src: './assets/design/work1.webp', alt: 'Хы! - Кости' },
+  { src: './assets/design/work2.webp', alt: 'CEN&ZURA - Осталась Здесь' },
+  { src: './assets/design/work3.jpg', alt: '123' },
+  { src: './assets/design/work4.webp', alt: '123' }
 ];
 
-// ---- Небольшие helpers ----
+// ---- Helpers ----
 const el = (tag, cls, html) => {
   const n = document.createElement(tag);
   if (cls) n.className = cls;
@@ -50,7 +68,17 @@ const el = (tag, cls, html) => {
   return n;
 };
 
-const ARROW = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9A9AA0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg>';
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+}
+
+// многострочный текст -> экранированные строки с переносами
+const multiline = txt =>
+  String(txt).split('\n').map(l => escapeHtml(l.trim())).filter(Boolean).join('<br>');
+
+const ARROW = '<svg class="arw" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg>';
 
 // ---- Рендер dev-папок ----
 function renderDev() {
@@ -58,7 +86,8 @@ function renderDev() {
   grid.innerHTML = '';
 
   DEV_PROJECTS.forEach(p => {
-    const state = { active: 'short' }; // short | long
+    const state = { active: 'short' };
+    const isMedia = !!p.media;
 
     const folder = el('div', 'folder');
 
@@ -69,9 +98,15 @@ function renderDev() {
     tabs.append(tabShort, tabLong);
 
     // тело
-    const body = el('div', 'folder__body');
+    const body = el('div', 'folder__body' + (isMedia ? ' folder__body--media' : ''));
+    if (isMedia) {
+      const bg = el('div', 'folder__bg');
+      bg.style.backgroundImage = `url("${p.media}")`;
+      if (p.mediaPos) bg.style.backgroundPosition = p.mediaPos;
+      body.append(bg, el('div', 'folder__scrim'));
+    }
     const inner = el('div', 'folder__inner');
-    const content = el('div'); // короткое / подробное описание
+    const content = el('div');
     const foot = buildFoot(p);
     inner.append(content, foot);
     body.append(inner);
@@ -83,6 +118,8 @@ function renderDev() {
       const short = state.active === 'short';
       tabShort.classList.toggle('is-active', short);
       tabLong.classList.toggle('is-active', !short);
+      // фото-фон только во вкладке «Подробнее»
+      folder.classList.toggle('is-media', isMedia && !short);
       content.innerHTML = '';
       content.append(short ? buildShort(p) : buildLong(p));
     };
@@ -94,12 +131,12 @@ function renderDev() {
 }
 
 function buildShort(p) {
-  return el('div', 'folder__short', escapeHtml(p.shortDesc));
+  return el('div', 'folder__short', multiline(p.shortDesc));
 }
 
 function buildLong(p) {
   const wrap = el('div', 'folder__long');
-  wrap.append(el('div', 'folder__longtext', escapeHtml(p.longDesc)));
+  wrap.append(el('div', 'folder__longtext', multiline(p.longDesc)));
   if (p.coauthor) {
     const a = el('a', 'coauthor');
     a.href = p.coauthor.url; a.target = '_blank'; a.rel = 'noopener';
@@ -131,9 +168,20 @@ function renderDesign() {
   grid.innerHTML = '';
   DESIGN_PROJECTS.forEach(d => {
     const item = el('div', 'masonry__item');
-    const frame = el('div', 'masonry__frame', escapeHtml(d.title));
-    frame.style.aspectRatio = d.ratio;
-    item.append(frame);
+    if (d.src) {
+      // реальная картинка — высота по натуральному соотношению сторон
+      const img = document.createElement('img');
+      img.className = 'masonry__img';
+      img.src = d.src;
+      img.alt = d.alt || '';
+      img.loading = 'lazy';
+      item.append(img);
+    } else {
+      // серая заглушка-пример
+      const frame = el('div', 'masonry__frame', escapeHtml(d.title || ''));
+      if (d.ratio) frame.style.aspectRatio = d.ratio;
+      item.append(frame);
+    }
     grid.append(item);
   });
 }
@@ -145,12 +193,10 @@ function renderRecs() {
   RECOMMENDATIONS.forEach(person => {
     const a = el('a', 'rec');
     a.href = person.url; a.target = '_blank'; a.rel = 'noopener';
-    const info = el('span');
-    info.append(
+    a.append(
       el('span', 'rec__name', escapeHtml(person.name)),
       el('span', 'rec__role', escapeHtml(person.role))
     );
-    a.append(el('span', 'rec__ava', escapeHtml(person.initials)), info);
     box.append(a);
   });
 }
@@ -173,12 +219,6 @@ function initSwitch() {
       design.hidden = cat !== 'design';
     });
   });
-}
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, c => (
-    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
-  ));
 }
 
 renderDev();
