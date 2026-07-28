@@ -3,10 +3,14 @@ const RECOMMENDATIONS = [
   { name: 'Андрей Ермолов', role: 'backend/frontend developer', url: 'https://github.com/andrey-ermolov' }
 ];
 
+// Dev-проекты (карточки-папки).
+// `media` — прямая ссылка на картинку (imgur и т.п.), показывается фоном
+// только во вкладке «Подробнее». Необязательное поле — без него карточка
+// обычная, без фото.
 const DEV_PROJECTS = [
   {
     title: 'DeskHub',
-    media: './assets/deskhub.png',
+    media: 'https://i.imgur.com/9xlO0w0.png',
     mediaPos: 'center 42%',
     shortDesc: 'Расширение в Chrome\nУдобная сортировка закладок на начальной странице Google Chrome',
     longDesc:
@@ -21,7 +25,7 @@ const DEV_PROJECTS = [
   },
   {
     title: 'BenVpn',
-    media: './assets/benvpn.png',
+    media: 'https://i.imgur.com/PPZwCNq.png',
     mediaPos: 'center center',
     shortDesc: 'BenVpn — графическая оболочка над sing-box и xray, многогранный функционал и простота использования',
     longDesc:
@@ -34,30 +38,45 @@ const DEV_PROJECTS = [
   },
   {
     title: 'PipDot',
-    // положи картинку в site/assets/pipdot.png — подхватится автоматически
-    media: './assets/pipdot.png',
+    media: 'https://i.imgur.com/xnyqduy.png',
     mediaPos: 'center center',
     shortDesc: 'Расширение в Chrome\nТочка в углу любого видео: клик открывает окно «картинка в картинке» поверх всех окон, с паузой и перемоткой.',
     longDesc: 'Расширение использует встроенный функционал «картинка в картинке» Chrome.',
     links: [
-      { label: 'Chrome Store', url: '#' },
+      { label: 'Chrome Store', url: 'https://chromewebstore.google.com/detail/pipdot/lffcogfhnhkcpghpcejmgpdkhojfnhhg' },
       { label: 'GitHub',       url: 'https://github.com/bendzhamin1/PipDot' }
+    ]
+  },
+  {
+    title: 'BenEQ',
+    media: 'https://i.imgur.com/k8FQG9L.png',
+    mediaPos: 'center center',
+    shortDesc: 'Per app и per site эквалайзер',
+    longDesc: 'Удобный эквалайзер с возможностью назначать аудио профили на приложения и сайты, подробный микшер, минималистичный вывод, качественные пресеты, автопереключение устройств вывода и многое другое.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/bendzhamin1/BenEQ' }
     ]
   }
 ];
 
 // ГАЛЕРЕЯ (вкладка Design).
-// Чтобы добавить свою работу: положи файл в site/assets/design/ и впиши строку:
-//   { src: './assets/design/moya-rabota.jpg', alt: 'Название работы' },
+// Чтобы добавить свою работу: залей картинку на любой хостинг (imgur и т.п.)
+// и впиши строку с прямой ссылкой на файл:
+//   { src: 'https://i.imgur.com/xxxxxxx.png', alt: 'Название работы' },
 // Порядок строк = порядок в галерее. Высота плитки берётся из самой картинки —
 // указывать соотношение сторон не нужно.
 // Строки без src (только title/ratio) — это серые заглушки-примеры, удали их,
 // когда зальёшь свои фото.
 const DESIGN_PROJECTS = [
-  { src: './assets/design/work1.webp', alt: 'Хы! - Кости' },
-  { src: './assets/design/work2.webp', alt: 'CEN&ZURA - Осталась Здесь' },
-  { src: './assets/design/work3.jpg', alt: '123' },
-  { src: './assets/design/work4.webp', alt: '123' }
+  { src: 'https://cdnb.artstation.com/p/assets/images/images/093/884/289/large/ben-.webp?1763820323', alt: 'Работа 1' },
+  { src: 'https://cdna.artstation.com/p/assets/images/images/093/953/190/large/ben-fin3.webp?1764026098', alt: 'Работа 2' },
+  { src: 'https://cdna.artstation.com/p/assets/images/images/093/953/052/large/ben-autumn.jpg?1764025658', alt: 'Работа 3' },
+  { src: 'https://cdnb.artstation.com/p/assets/images/images/093/951/335/large/ben-2k.webp?1764020401', alt: 'Работа 4' },
+  { src: 'https://i.imgur.com/yePNtF6.jpeg', alt: 'Работа 5' },
+  { src: 'https://i.imgur.com/kY4FWg8.png', alt: 'Работа 6' },
+  { src: 'https://i.imgur.com/Fg1IeLC.png', alt: 'Работа 7' },
+  { src: 'https://i.imgur.com/gzPG85h.jpeg', alt: 'Работа 8' },
+  { src: 'https://i.imgur.com/buMX3Tz.jpeg', alt: 'Работа 9' }
 ];
 
 // ---- Helpers ----
@@ -175,6 +194,7 @@ function renderDesign() {
       img.src = d.src;
       img.alt = d.alt || '';
       img.loading = 'lazy';
+      img.addEventListener('click', () => openLightbox(d.src, d.alt || ''));
       item.append(img);
     } else {
       // серая заглушка-пример
@@ -221,7 +241,32 @@ function initSwitch() {
   });
 }
 
+// ---- Лайтбокс: открытие картинки галереи в большом окне ----
+function openLightbox(src, alt) {
+  const lightbox = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  img.src = src;
+  img.alt = alt;
+  lightbox.hidden = false;
+}
+
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const close = () => {
+    lightbox.hidden = true;
+    document.getElementById('lightboxImg').src = '';
+  };
+  lightbox.addEventListener('click', e => {
+    if (e.target !== document.getElementById('lightboxImg')) close();
+  });
+  lightbox.querySelector('.lightbox__close').addEventListener('click', close);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !lightbox.hidden) close();
+  });
+}
+
 renderDev();
 renderDesign();
 renderRecs();
 initSwitch();
+initLightbox();

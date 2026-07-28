@@ -245,7 +245,48 @@ a { color: inherit; text-decoration: none; }
   display: block;
   border-radius: 16px;
   border: 1px solid rgba(0,0,0,0.05);
+  cursor: zoom-in;
+  transition: opacity .15s ease;
 }
+.masonry__img:hover { opacity: 0.88; }
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(12,12,14,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 5vw;
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lightbox__img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  cursor: default;
+}
+.lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.lightbox__close:hover { background: rgba(255,255,255,0.24); }
 
 /* ---------- FOOTER ---------- */
 .footer {
