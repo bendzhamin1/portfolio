@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bendzhamin1.ru/sitemap.xml
