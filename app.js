@@ -75,8 +75,9 @@ const DESIGN_PROJECTS = [
   { src: 'https://i.imgur.com/yePNtF6.jpeg', alt: 'Работа 5' },
   { src: 'https://i.imgur.com/kY4FWg8.png', alt: 'Работа 6' },
   { src: 'https://i.imgur.com/Fg1IeLC.png', alt: 'Работа 7' },
-  { src: 'https://i.imgur.com/gzPG85h.jpeg', alt: 'Работа 8' },
-  { src: 'https://i.imgur.com/buMX3Tz.jpeg', alt: 'Работа 9' }
+  { src: 'https://i.imgur.com/gzPG85h.jpeg', alt: 'Jilin12' },
+  { src: 'https://i.imgur.com/buMX3Tz.jpeg', alt: 'aeroplus' },
+  { src: 'https://cdnb.artstation.com/p/assets/images/images/101/227/161/large/ben-redsocks.jpg?1785494802', alt: 'rise' }
 ];
 
 // ---- Helpers ----
