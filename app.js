@@ -48,7 +48,7 @@ const DEV_PROJECTS = [
     ]
   },
   {
-    title: 'BenEQ',
+    title: 'BEQ',
     media: 'https://i.imgur.com/k8FQG9L.png',
     mediaPos: 'center center',
     shortDesc: 'Per app и per site эквалайзер',
