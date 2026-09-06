@@ -56,6 +56,19 @@ const DEV_PROJECTS = [
     links: [
       { label: 'GitHub', url: 'https://github.com/bendzhamin1/BenEQ' }
     ]
+  },
+  {
+    title: 'Bbox',
+    media: 'https://i.ibb.co/k687kNqm/photo-2026-09-06-16-31-42.jpg',
+    mediaPos: 'center center',
+    shortDesc: 'Буфер обмена для macOS\nБесплатная замена «Paste»',
+    longDesc:
+      'Нативное приложение для macOS: хранит историю буфера обмена, включая картинки.\n' +
+      'Открытый исходный код.\n' +
+      'Приносит на Mac полноценный буфер обмена с историей — как на Windows, и бесплатно.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/bendzhamin1/Bbox/releases' }
+    ]
   }
 ];
 
