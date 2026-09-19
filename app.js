@@ -24,7 +24,7 @@ const DEV_PROJECTS = [
     ]
   },
   {
-    title: 'BenVpn',
+    title: 'BenVpn (Windows/MacOs)',
     media: 'https://i.imgur.com/PPZwCNq.png',
     mediaPos: 'center center',
     shortDesc: 'BenVpn — графическая оболочка над sing-box и xray, многогранный функционал и простота использования',
@@ -33,7 +33,7 @@ const DEV_PROJECTS = [
       'раздельное туннелирование по сайтам и приложениям, режим proxy и TUN, ' +
       'группы подписок, логи и многое другое.',
     links: [
-      { label: 'GitHub', url: 'https://github.com/bendzhamin1/BenVpn' }
+      { label: 'GitHub', url: 'https://github.com/bendzhamin1/BenVpn/releases' }
     ]
   },
   {
@@ -54,11 +54,11 @@ const DEV_PROJECTS = [
     shortDesc: 'Per app и per site эквалайзер',
     longDesc: 'Удобный эквалайзер с возможностью назначать аудио профили на приложения и сайты, подробный микшер, минималистичный вывод, качественные пресеты, автопереключение устройств вывода и многое другое.',
     links: [
-      { label: 'GitHub', url: 'https://github.com/bendzhamin1/BenEQ' }
+      { label: 'GitHub', url: 'https://github.com/bendzhamin1/BEQ/releases' }
     ]
   },
   {
-    title: 'Bbox',
+    title: 'Bbox (MacOs)',
     media: 'https://i.ibb.co/k687kNqm/photo-2026-09-06-16-31-42.jpg',
     mediaPos: 'center center',
     shortDesc: 'Буфер обмена для macOS\nБесплатная замена «Paste»',
