@@ -87,7 +87,14 @@ const DEV_PROJECTS = [
 // когда зальёшь свои фото.
 const DESIGN_PROJECTS = [
   { src: 'https://cdnb.artstation.com/p/assets/images/images/093/884/289/large/ben-.webp?1763820323', alt: 'Работа 1' },
-  { src: 'https://cdna.artstation.com/p/assets/images/images/093/953/190/large/ben-fin3.webp?1764026098', alt: 'Работа 2' },
+  { src: [
+    'https://cdna.artstation.com/p/assets/images/images/093/953/190/large/ben-fin3.webp?1764026098',
+    'https://cdna.artstation.com/p/assets/images/images/093/953/192/large/ben-.webp?1764026055',
+    'https://cdna.artstation.com/p/assets/images/images/093/953/194/large/ben-.webp?1764026059',
+    'https://cdna.artstation.com/p/assets/images/images/093/953/196/large/ben-.webp?1764026063',
+    'https://cdnb.artstation.com/p/assets/images/images/093/953/197/large/ben-.jpg?1764026067',
+    'https://cdnb.artstation.com/p/assets/images/images/093/953/201/large/ben-.webp?1764026071'
+  ], alt: 'Работа 2' },
   { src: 'https://cdna.artstation.com/p/assets/images/images/093/953/052/large/ben-autumn.jpg?1764025658', alt: 'Работа 3' },
   { src: 'https://cdnb.artstation.com/p/assets/images/images/093/951/335/large/ben-2k.webp?1764020401', alt: 'Работа 4' },
   { src: 'https://i.imgur.com/yePNtF6.jpeg', alt: 'Работа 5' },
