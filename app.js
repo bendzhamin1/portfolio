@@ -76,6 +76,11 @@ const DEV_PROJECTS = [
 // Чтобы добавить свою работу: залей картинку на любой хостинг (imgur и т.п.)
 // и впиши строку с прямой ссылкой на файл:
 //   { src: 'https://i.imgur.com/xxxxxxx.png', alt: 'Название работы' },
+// Несколько фото в одной работе — передай в src МАССИВ ссылок (первая = обложка):
+//   { src: ['https://…/1.png', 'https://…/2.png', 'https://…/3.png'], alt: 'Работа' },
+//   → на плитке снизу появятся точки по числу фото (первая подсвечена).
+//     Листать фото можно ТОЛЬКО в полноэкранном просмотре: клик по плитке →
+//     фуллскрин со стрелками (стрелки видны при наведении на фото).
 // Порядок строк = порядок в галерее. Высота плитки берётся из самой картинки —
 // указывать соотношение сторон не нужно.
 // Строки без src (только title/ratio) — это серые заглушки-примеры, удали их,
@@ -201,15 +206,26 @@ function renderDesign() {
   grid.innerHTML = '';
   DESIGN_PROJECTS.forEach(d => {
     const item = el('div', 'masonry__item');
-    if (d.src) {
-      // реальная картинка — высота по натуральному соотношению сторон
+    // src может быть строкой (одно фото) или массивом (несколько)
+    const photos = Array.isArray(d.src) ? d.src.filter(Boolean) : (d.src ? [d.src] : []);
+    if (photos.length) {
+      const multi = photos.length > 1;
+      const media = el('div', 'masonry__media' + (multi ? ' masonry__media--multi' : ''));
+      // реальная картинка — высота по натуральному соотношению сторон; обложка = первая фотка
       const img = document.createElement('img');
       img.className = 'masonry__img';
-      img.src = d.src;
+      img.src = photos[0];
       img.alt = d.alt || '';
       img.loading = 'lazy';
-      img.addEventListener('click', () => openLightbox(d.src, d.alt || ''));
-      item.append(img);
+      img.addEventListener('click', () => openLightbox(photos, 0, d.alt || ''));
+      media.append(img);
+      // точки-индикатор нескольких фото (просто индикатор — листать только в фуллскрине)
+      if (multi) {
+        const dots = el('div', 'masonry__dots');
+        photos.forEach((_, i) => dots.append(el('span', 'masonry__dot' + (i === 0 ? ' is-active' : ''))));
+        media.append(dots);
+      }
+      item.append(media);
     } else {
       // серая заглушка-пример
       const frame = el('div', 'masonry__frame', escapeHtml(d.title || ''));
@@ -255,13 +271,33 @@ function initSwitch() {
   });
 }
 
-// ---- Лайтбокс: открытие картинки галереи в большом окне ----
-function openLightbox(src, alt) {
-  const lightbox = document.getElementById('lightbox');
+// ---- Лайтбокс: полноэкранный просмотр фото (со стрелками, если фоток несколько) ----
+const lightboxState = { photos: [], index: 0, alt: '' };
+
+function showLightboxPhoto() {
   const img = document.getElementById('lightboxImg');
-  img.src = src;
-  img.alt = alt;
+  img.src = lightboxState.photos[lightboxState.index] || '';
+  img.alt = lightboxState.alt || '';
+}
+
+// photos — массив ссылок (или одна ссылка), index — с какой фотки начать
+function openLightbox(photos, index, alt) {
+  const list = Array.isArray(photos) ? photos.filter(Boolean) : (photos ? [photos] : []);
+  if (!list.length) return;
+  lightboxState.photos = list;
+  lightboxState.index = index || 0;
+  lightboxState.alt = alt || '';
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.toggle('has-nav', list.length > 1);   // стрелки только при нескольких
+  showLightboxPhoto();
   lightbox.hidden = false;
+}
+
+function stepLightbox(dir) {
+  const n = lightboxState.photos.length;
+  if (n < 2) return;
+  lightboxState.index = (lightboxState.index + dir + n) % n;   // по кругу
+  showLightboxPhoto();
 }
 
 function initLightbox() {
@@ -269,13 +305,20 @@ function initLightbox() {
   const close = () => {
     lightbox.hidden = true;
     document.getElementById('lightboxImg').src = '';
+    lightboxState.photos = [];
   };
+  // клик по тёмному фону закрывает; по самому фото и стрелкам — нет
   lightbox.addEventListener('click', e => {
-    if (e.target !== document.getElementById('lightboxImg')) close();
+    if (e.target === lightbox || e.target.classList.contains('lightbox__stage')) close();
   });
   lightbox.querySelector('.lightbox__close').addEventListener('click', close);
+  lightbox.querySelector('.lightbox__nav--prev').addEventListener('click', e => { e.stopPropagation(); stepLightbox(-1); });
+  lightbox.querySelector('.lightbox__nav--next').addEventListener('click', e => { e.stopPropagation(); stepLightbox(1); });
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !lightbox.hidden) close();
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') stepLightbox(-1);
+    else if (e.key === 'ArrowRight') stepLightbox(1);
   });
 }
 
