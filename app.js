@@ -99,11 +99,11 @@ const DESIGN_PROJECTS = [
   { src: 'https://cdnb.artstation.com/p/assets/images/images/093/951/335/large/ben-2k.webp?1764020401', alt: 'Работа 4' },
   { src: 'https://i.imgur.com/yePNtF6.jpeg', alt: 'Работа 5' },
   { src: 'https://i.imgur.com/kY4FWg8.png', alt: 'Работа 6' },
-  { src: 'https://i.imgur.com/Fg1IeLC.png', alt: 'Работа 7' },
+  { src: 'https://cdna.artstation.com/p/assets/images/images/103/168/266/large/ben-detective.jpg?1791850007', alt: 'detective' },
   { src: 'https://i.imgur.com/gzPG85h.jpeg', alt: 'Jilin12' },
   { src: 'https://i.imgur.com/buMX3Tz.jpeg', alt: 'aeroplus' },
   { src: 'https://cdnb.artstation.com/p/assets/images/images/101/227/161/large/ben-redsocks.jpg?1785494802', alt: 'rise' },
-  { src: 'https://cdna.artstation.com/p/assets/images/images/103/168/266/large/ben-detective.jpg?1791850007', alt: 'detective' }
+  { src: 'https://i.imgur.com/Fg1IeLC.png', alt: 'Работа 7' }
 ];
 
 // ---- Helpers ----
